@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\Actl\PostalCodeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,7 +28,10 @@ Route::controller(AdminController::class)->group(function () {
      
 });
 
-
+// Postal codes
+Route::controller(PostalCodeController::class)->group(function(){
+    Route::get('/postalCode/all','PostalCodeAll')->name('postalCode.all');
+});
  
 
 
