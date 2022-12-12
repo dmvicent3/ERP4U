@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Actl\PostalCodeController;
+use App\Http\Controllers\Actl\SupplierController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,9 +32,22 @@ Route::controller(AdminController::class)->group(function () {
 // Postal codes
 Route::controller(PostalCodeController::class)->group(function(){
     Route::get('/postalCode/all','PostalCodeAll')->name('postalCode.all');
+    Route::get('/postalCode/add','PostalCodeAdd')->name('postalCode.add');
+    Route::post('/postalCode/store','PostalCodeStore')->name('postalCode.store');
+    Route::get('/postalCode/edit/{id}','PostalCodeEdit')->name('postalCode.edit');
+    Route::post('/postalCode/update','PostalCodeUpdate')->name('postalCode.update');
+    Route::get('/postalCode/delete/{id}','PostalCodeDelete')->name('postalCode.delete');
 });
  
-
+// Supplier
+Route::controller(SupplierController::class)->group(function(){
+    Route::get('/supplier/all','SupplierAll')->name('supplier.all');
+    Route::get('/supplier/add','SupplierAdd')->name('supplier.add');
+    Route::post('/supplier/store','SupplierStore')->name('supplier.store');
+    Route::get('/supplier/edit/{id}','SupplierEdit')->name('supplier.edit');
+    Route::post('/supplier/update','SupplierUpdate')->name('supplier.update');
+    Route::get('/supplier/delete/{id}','SupplierDelete')->name('supplier.delete');
+});
 
 
 

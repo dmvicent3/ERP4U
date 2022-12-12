@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('postalCode', function (Blueprint $table) {
+        Schema::create('supplier', function (Blueprint $table) {
             $table->id();
-            $table->string('postalCode')->unique();
-            $table->string('location');
+            $table->integer('code')->unique();
+            $table->string('address1')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('name');
+            $table->string('postalCode')->nullable();
+            $table->string('town')->nullable();
             $table->tinyInteger('status')->default('1');
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('postalCode');
+        Schema::dropIfExists('supplier');
     }
 };

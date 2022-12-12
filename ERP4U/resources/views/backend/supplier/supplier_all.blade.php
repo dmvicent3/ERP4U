@@ -17,27 +17,35 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ route('postalCode.add') }}" class="btn btn-secondary btn-rounded waves-effect waves-light"
-                        style="float:right;" >Add Postal Code</a><br></br>
+                    <a href="{{ route('supplier.add') }}" class="btn btn-secondary btn-rounded waves-effect waves-light"
+                        style="float:right;" >Add Supplier</a><br></br>
                         <h4 class="card-title">Postal Codes All Data </h4>
                         <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>Ln</th>
+                                    <th>Code</th> 
+                                    <th>Name</th>
+                                    <th>NIF</th> 
                                     <th>Postal Code</th> 
                                     <th>Location</th> 
+                                    <th>Town</th> 
                                     <th>Action</th>  
                                 </tr>
                             </thead>
                             <tbody> 
-                        	   @foreach($postalCodes as $key => $item)
+                        	   @foreach($suppliers as $key => $item)
                                     <tr>
                                         <td> {{ $key+1}} </td>
-                                        <td> {{ $item->postalCode }} </td> 
-                                        <td> {{ $item->location }} </td> 
+                                        <td> {{ $item->code }} </td> 
+                                        <td> {{ $item->name }} </td> 
+                                        <td>nif</td>
+                                        <td> {{ $item->postalCode }} </td>
+                                        <td> {{ $item['postalCodeLink']['location'] }} </td>   
+                                        <td> {{ $item->town }} </td> 
                                         <td>
-                                            <a href="{{route('postalCode.edit', $item->id)}}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
-                                            <a href="{{route('postalCode.delete', $item->id)}}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+                                            <a href="{{ route('supplier.edit', $item->id) }}"  class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
+                                            <a href="{{ route('supplier.delete', $item->id) }}"  class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
                                         </td>
                                     </tr>
                                 @endforeach
